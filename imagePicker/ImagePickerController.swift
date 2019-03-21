@@ -56,6 +56,7 @@ UINavigationControllerDelegate,  UITextFieldDelegate{
     }
     
     @objc func keyboardWillHide(notification: Notification) {
+        
         self.view.frame.origin.y = 0
     }
     
@@ -106,9 +107,6 @@ UINavigationControllerDelegate,  UITextFieldDelegate{
         present (activityController, animated: true, completion: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text  = ""
@@ -150,7 +148,7 @@ UINavigationControllerDelegate,  UITextFieldDelegate{
         imagePicker.image = nil
         toptxt.text = "TOP"
         bottemtxt.text = "BOTTOM"
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
 }
