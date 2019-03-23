@@ -12,6 +12,7 @@ UINavigationControllerDelegate,  UITextFieldDelegate{
     @IBOutlet weak var navBar: UIToolbar!
     @IBOutlet weak var bottemtxt: UITextField!
     @IBOutlet weak var imagePicker: UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareTextField(textField: toptxt, text: "TOP")
@@ -19,17 +20,24 @@ UINavigationControllerDelegate,  UITextFieldDelegate{
         cambtn.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         subscribeToKeyboardNotifications()
     }
-    
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
     func prepareTextField(textField: UITextField, text: String) {
         textField.delegate = self
         textField.textAlignment = .center
         let memeTextAttributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.black,
+            NSAttributedStringKey.foregroundColor: UIColor.white,
             NSAttributedStringKey.strokeWidth: -2.0,
             NSAttributedStringKey.strokeColor : UIColor.black,
-            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)] as [NSAttributedStringKey : Any]
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 40)] as [NSAttributedStringKey : Any]
         
         textField.attributedText = NSAttributedString(string: text, attributes: memeTextAttributes)
+            textField.defaultTextAttributes = memeTextAttributes
+            textField.text = text
+            textField.textAlignment = .center
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,9 +153,9 @@ UINavigationControllerDelegate,  UITextFieldDelegate{
     }
     
     @IBAction func cancel(_ sender: Any) {
-        imagePicker.image = nil
-        toptxt.text = "TOP"
-        bottemtxt.text = "BOTTOM"
+        //imagePicker.image = nil
+        //toptxt.text = "TOP"
+        //bottemtxt.text = "BOTTOM"
         dismiss(animated: true, completion: nil)
     }
     

@@ -23,9 +23,7 @@ class MemeCollectionViewController: UICollectionViewController{
         flowLayout.itemSize = CGSize(width: widthDimension, height: heightDimension)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.collectionView!.reloadData()
@@ -50,7 +48,7 @@ class MemeCollectionViewController: UICollectionViewController{
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
         // Set image
-       cell.memeView?.image  = meme.memedImage
+        cell.memeView?.image  = meme.memedImage
         
         return cell
     }
